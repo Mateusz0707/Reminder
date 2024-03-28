@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS moja_baza_danych;
+CREATE DATABASE IF NOT EXISTS reminder;
 
-USE moja_baza_danych;
+USE reminder;
 
 -- Tabela użytkowników
 CREATE TABLE IF NOT EXISTS uzytkownik (
