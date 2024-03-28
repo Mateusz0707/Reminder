@@ -19,3 +19,7 @@ godzina TIME,
 data DATE,
 kategoria VARCHAR(100)
 );
+INSERT INTO przypomnienia (nazwa_przypomnienia, notatka, godzina, data, kategoria) VALUES 
+('Spotkanie', 'Spotkanie z klientem XYZ', '10:00:00', '2024-04-01', 'Biznes'),
+('Zakupy', 'Kupić mleko i chleb', '15:30:00', '2024-04-02', 'Domowe'),
+('Wizyta u lekarza', 'Wizyta kontrolna', '14:00:00', '2024-04-05', 'Zdrowie');
