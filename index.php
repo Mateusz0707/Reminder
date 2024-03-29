@@ -12,7 +12,7 @@
     <!-- Baner -->
     <div style="border-bottom:1px solid lightgray;" class="w-full h-13 bg-gray-100">
         <div class="flex space-x-1">
-            <button class="bg-transparent text-black font-semibold ml-5 py-2 text-xl font-bold">
+            <button class="bg-transparent text-black font-semibold ml-5 py-2 text-xl font-bold ">
                 iCloud
             </button>
             <button class="bg-transparent text-blue-700 font-semibold py-2 text-xl font-bold">
@@ -45,18 +45,46 @@
     <div class="flex flex-row h-full">
 
         <!-- Sidebar -->
-        <div style="border-right:1px solid lightgray; width: 20%;" class="p-4 bg-transparent h-full">
+        <div style="border-right:1px solid lightgray; width: 12%;" class="p-4 bg-transparent h-full">
             <div class="flex justify-center">
                 <!-- Tutaj umieść treść twojego sidebaru -->
             </div>
             <br />
-            <a href=""><button>Wszyskie przypomnienia</button></a>
+            <a href="">
+                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-left space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6 ml-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                    </svg>
+                    <span>Wszyskie przypomnienia</span>
+                </button>
+            </a>
             <br />
-            <a href=""><button>Szkoła</button></a>
+            <a href="">
+                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-left space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6 ml-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                    </svg>
+                    <span>Szkoła</span>
+                </button>
+            </a>
             <br />
-            <a href=""><button>Praca</button></a>
+            <a href="">
+                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                    </svg>
+                    <span>Praca</span>
+                </button>
+            </a>
             <br />
-            <a href=""><button>Hobby</button></a>
+            <a href="">
+                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                    </svg>
+                    <span>Hobby</span>
+                </button>
+            </a>
         </div>
 
         <!-- Wyswietlanie przypomnien -->
