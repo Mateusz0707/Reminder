@@ -69,8 +69,8 @@
             </a>
             <br />
             <a href="">
-                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6">
+                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-left space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6 ml-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
                     </svg>
                     <span>Praca</span>
@@ -78,8 +78,8 @@
             </a>
             <br />
             <a href="">
-                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6">
+                <button class="bg-gray-200 h-9 w-64 rounded-xl flex items-center justify-left space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-6 h-6 ml-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
                     </svg>
                     <span>Hobby</span>
@@ -90,7 +90,7 @@
         <!-- Wyswietlanie przypomnien -->
         <div class="min-h-screen flex-grow">
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <h2 class="text-xl font-semibold mb-4">Przypomnienia</h2>
+                <h2 class="text-xl  font-semibold mb-4">Przypomnienia</h2>
                 <?php
             // Połączenie z bazą danych MySQL w kontenerze Docker
             $servername = "mysql"; // Nazwa serwera MySQL (zgodna z nazwą usługi w pliku docker-compose.yml)
@@ -115,7 +115,7 @@
                 while ($row = $result->fetch_assoc()) {
                     ?>
                     <div class="bg-gray-100 rounded p-4 mb-4">
-                        <h3 class="font-semibold mb-2"><?php echo $row["nazwa_przypomnienia"]; ?></h3>
+                        <h3 class="font-semibold mb-2 text-xl font-bold"><?php echo $row["nazwa_przypomnienia"]; ?></h3>
                         <p class="mb-2"><strong>Notatka:</strong> <?php echo $row["notatka"]; ?></p>
                         <p class="mb-2"><strong>Godzina:</strong> <?php echo $row["godzina"]; ?></p>
                         <p class="mb-2"><strong>Data:</strong> <?php echo $row["data"]; ?></p>
