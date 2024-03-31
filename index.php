@@ -68,33 +68,49 @@
       <input type="text" class="border border-gray-300 rounded-2xl px-3 py-2 w-full mb-2" placeholder="Tytuł przypomnienia">
       <input type="text" class="border border-gray-300 rounded-2xl px-3 py-2 w-full mb-2" placeholder="Notatka do przypomnienia">
     </div>
-    <div class=" mb-4">
-      <label class="flex items-center">
-        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500"><span class="ml-2">Przypomnij mi w dniu</span>
-      </label>
-      
-    <label class="flex items-center">
-        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500"><span class="ml-2">Przypomnij o godzinie</span>
-      </label>
+    <div class="flex justify-between mb-4">
+        <label for="">Przypomnij mi w dniu</label>
+        <input type="checkbox" id="toggle1" class="hidden" />
+        <label for="toggle1" class="flex items-center cursor-pointer">
+            <div id="toggle-bg1" class="relative w-10 h-5 bg-gray-300 rounded-full shadow-inner mr-4">
+                <div class="absolute left-0 w-5 h-5 bg-gray-100 rounded-full shadow-md toggle-checkbox transition-transform duration-300 ease-in-out"></div>
+            </div>
+ 
+    </div>
+    <div class="flex justify-between mb-4">
+        <label for="">Przypomnij mi o godzinie</label>
+        <input type="checkbox" id="toggle2" class="hidden" />
+        <label for="toggle2" class="flex items-center cursor-pointer">
+            <div id="toggle-bg2" class="relative w-10 h-5 bg-gray-300 rounded-full shadow-inner mr-4">
+                <div class="absolute left-0 w-5 h-5 bg-gray-100 rounded-full shadow-md toggle-checkbox transition-transform duration-300 ease-in-out"></div>
+            </div>
+ 
+    </div>
+    <div class="flex justify-between mb-4">
+        <label for="">Priorytet dla przypomnienia</label>
+        <input type="checkbox" id="toggle3" class="hidden" />
+        <label for="toggle3" class="flex items-center cursor-pointer">
+            <div id="toggle-bg3" class="relative w-10 h-5 bg-gray-300 rounded-full shadow-inner mr-4">
+                <div class="absolute left-0 w-5 h-5 bg-gray-100 rounded-full shadow-md toggle-checkbox transition-transform duration-300 ease-in-out"></div>
+            </div>
+ 
     </div>
     <div class="flex justify-between items-center mb-4">
-      <span>Priorytet</span>
-      <div>
-        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2">Tak</button>
-        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Nie</button>
-      </div>
-    </div>
-    <div class="flex justify-between items-center mb-4">
-      <span>Lista</span>
-      <select class="border border-gray-300 rounded-md px-3 py-2">
-        <option>Hobby</option>
-        <option>Praca</option>
-        <option>Szkoła</option>
-      </select>
+        <label for="">Kategoria</label>
+    <form>
+  <label for="category_select" class="sr-only"></label>
+  <select id="category_select" class="text-center block py-1.5 px-0 w-52 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 ">
+      <option class="text-center" selected>Wybierz kategorię</option>
+      <option value="1">Szkoła</option>
+      <option value="2">Praca</option>
+      <option value="3">Hobby</option>
+      <option value="4">Rodzina</option>
+  </select>
+</form>
     </div>
     <div class="flex justify-end justify-between">
-      <button id="saveBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Zachowaj</button>
-      <button id="cancelBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Anuluj</button>
+      <button id="saveBtn" class="bg-blue-500 hover:bg-blue-700 w-56  text-white font-bold py-2 px-4 rounded-2xl mr-2">Zachowaj</button>
+      <button id="cancelBtn" class="bg-red-500 hover:bg-red-700 w-56  text-white font-bold py-2 px-4 rounded-2xl">Anuluj</button>
     </div>
   </div>
 
@@ -119,6 +135,23 @@
             popup.style.display = "none";
         }
     });
+    const toggles = document.querySelectorAll('[id^="toggle"]');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function () {
+                const toggleId = toggle.id;
+                const toggleCheckbox = document.querySelector(`#${toggleId} + label .toggle-checkbox`);
+                const toggleBackground = document.querySelector(`#${toggleId} + label #toggle-bg${toggleId.slice(-1)}`);
+                if (toggle.checked) {
+                    toggleCheckbox.style.transform = 'translateX(100%)';
+                    toggleBackground.classList.remove('bg-gray-400');
+                    toggleBackground.classList.add('bg-blue-500');
+                } else {
+                    toggleCheckbox.style.transform = 'translateX(0)';
+                    toggleBackground.classList.remove('bg-blue-500');
+                    toggleBackground.classList.add('bg-gray-400');
+                }
+            });
+        });
 </script>
 
     <!-- Zmiana kolejności divów dla lepszego ułożenia -->
