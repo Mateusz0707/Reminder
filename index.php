@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Przypomnienia</title>
-    <script src="popups.js"></script>
-    <link rel="stylesheet" href="style_index.css">
+   
     <!-- Dodanie Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
     .popup-container {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  z-index: 9999;
-}
-
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 20px;
+        z-index: 9999;
+    }
 </style>
 
 <body class="flex flex-col h-screen">
@@ -40,7 +38,7 @@
         <div class="fixed top-0 right-0 p-1 flex space-x-2">
             <button
                 class="bg-transparent text-right hover:bg-gray-300   py-2 px-1 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
-                id="openPopup" onclick="openPopup()">
+                id="openPopup" onclick="openPopup(event)">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
@@ -61,68 +59,100 @@
 <!-- Okno popup -->
 <div id="popup" class="popup-container">
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-lg font-bold">Szczegóły</h2>
+      <h2 class="text-lg font-bold">Formularz dodawania przypomnienia</h2>
       <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8l5 5 5-5"></path>
       </svg>
     </div>
     <div class="mb-4">
-      <input type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full mb-2" placeholder="Input 1">
-      <input type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full mb-2" placeholder="Input 2">
+      <input type="text" class="border border-gray-300 rounded-2xl px-3 py-2 w-full mb-2" placeholder="Tytuł przypomnienia">
+      <input type="text" class="border border-gray-300 rounded-2xl px-3 py-2 w-full mb-2" placeholder="Notatka do przypomnienia">
     </div>
-    <div class="flex items-center mb-4">
-      <label class="flex items-center">
-        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500"><span class="ml-2">Przypomnij mi w dniu</span>
-      </label>
-      <label class="flex items-center ml-auto">
-        <span>Przypomnij mi o godzinie</span><input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500 ml-2">
-      </label>
+    <div class="flex justify-between mb-4">
+        <label for="">Przypomnij mi w dniu</label>
+        <input type="checkbox" id="toggle1" class="hidden" />
+        <label for="toggle1" class="flex items-center cursor-pointer">
+            <div id="toggle-bg1" class="relative w-10 h-5 bg-gray-300 rounded-full shadow-inner mr-4">
+                <div class="absolute left-0 w-5 h-5 bg-gray-100 rounded-full shadow-md toggle-checkbox transition-transform duration-300 ease-in-out"></div>
+            </div>
+ 
+    </div>
+    <div class="flex justify-between mb-4">
+        <label for="">Przypomnij mi o godzinie</label>
+        <input type="checkbox" id="toggle2" class="hidden" />
+        <label for="toggle2" class="flex items-center cursor-pointer">
+            <div id="toggle-bg2" class="relative w-10 h-5 bg-gray-300 rounded-full shadow-inner mr-4">
+                <div class="absolute left-0 w-5 h-5 bg-gray-100 rounded-full shadow-md toggle-checkbox transition-transform duration-300 ease-in-out"></div>
+            </div>
+ 
+    </div>
+    <div class="flex justify-between mb-4">
+        <label for="">Priorytet dla przypomnienia</label>
+        <input type="checkbox" id="toggle3" class="hidden" />
+        <label for="toggle3" class="flex items-center cursor-pointer">
+            <div id="toggle-bg3" class="relative w-10 h-5 bg-gray-300 rounded-full shadow-inner mr-4">
+                <div class="absolute left-0 w-5 h-5 bg-gray-100 rounded-full shadow-md toggle-checkbox transition-transform duration-300 ease-in-out"></div>
+            </div>
+ 
     </div>
     <div class="flex justify-between items-center mb-4">
-      <span>Priorytet</span>
-      <div>
-        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2">Tak</button>
-        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Nie</button>
-      </div>
+        <label for="">Kategoria</label>
+    <form>
+  <label for="category_select" class="sr-only"></label>
+  <select id="category_select" class="text-center block py-1.5 px-0 w-52 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 ">
+      <option class="text-center" selected>Wybierz kategorię</option>
+      <option value="1">Szkoła</option>
+      <option value="2">Praca</option>
+      <option value="3">Hobby</option>
+      <option value="4">Rodzina</option>
+  </select>
+</form>
     </div>
-    <div class="flex justify-between items-center mb-4">
-      <span>Lista</span>
-      <select class="border border-gray-300 rounded-md px-3 py-2">
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
-    </div>
-    <div class="flex justify-end">
-      <button id="saveBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Zachowaj</button>
-      <button id="cancelBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Anuluj</button>
+    <div class="flex justify-end justify-between">
+      <button id="saveBtn" class="bg-blue-500 hover:bg-blue-700 w-56  text-white font-bold py-2 px-4 rounded-2xl mr-2">Zachowaj</button>
+      <button id="cancelBtn" class="bg-red-500 hover:bg-red-700 w-56  text-white font-bold py-2 px-4 rounded-2xl">Anuluj</button>
     </div>
   </div>
 
   <script>
-const openPopupBtn = document.getElementById("openPopup");
-const popup = document.getElementById("popup");
-const saveBtn = document.getElementById("saveBtn");
-const cancelBtn = document.getElementById("cancelBtn");
+    const openPopup = (event) => {
+        event.stopPropagation(); // Zapobiega propagacji zdarzenia kliknięcia
+        const popup = document.getElementById("popup");
+        popup.style.display = "block";
+    };
 
-openPopupBtn.addEventListener("click", () => {
-  popup.style.display = "block";
-});
+    const cancelBtn = document.getElementById("cancelBtn");
 
-cancelBtn.addEventListener("click", () => {
-  popup.style.display = "none";
-});
+    cancelBtn.addEventListener("click", () => {
+        const popup = document.getElementById("popup");
+        popup.style.display = "none";
+    });
 
-window.addEventListener("click", (e) => {
-  if (e.target === popup) {
-    popup.style.display = "none";
-  }
-});
-
-
-  </script>
-
-
+    window.addEventListener("click", (e) => {
+        const popup = document.getElementById("popup");
+        // Sprawdź, czy kliknięty element nie jest dzieckiem okna popup
+        if (!popup.contains(e.target) && e.target !== document.getElementById("openPopup")) {
+            popup.style.display = "none";
+        }
+    });
+    const toggles = document.querySelectorAll('[id^="toggle"]');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function () {
+                const toggleId = toggle.id;
+                const toggleCheckbox = document.querySelector(`#${toggleId} + label .toggle-checkbox`);
+                const toggleBackground = document.querySelector(`#${toggleId} + label #toggle-bg${toggleId.slice(-1)}`);
+                if (toggle.checked) {
+                    toggleCheckbox.style.transform = 'translateX(100%)';
+                    toggleBackground.classList.remove('bg-gray-400');
+                    toggleBackground.classList.add('bg-blue-500');
+                } else {
+                    toggleCheckbox.style.transform = 'translateX(0)';
+                    toggleBackground.classList.remove('bg-blue-500');
+                    toggleBackground.classList.add('bg-gray-400');
+                }
+            });
+        });
+</script>
 
     <!-- Zmiana kolejności divów dla lepszego ułożenia -->
     <div class="flex flex-row h-full">
