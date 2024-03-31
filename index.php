@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Przypomnienia</title>
+    <script src="popups.js"></script>
+    <link rel="stylesheet" href="style_index.css">
     <!-- Dodanie Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+<style>
+    .popup-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 9999;
+}
+
+</style>
+
 <body class="flex flex-col h-screen">
 
     <!-- Baner -->
@@ -23,7 +40,7 @@
         <div class="fixed top-0 right-0 p-1 flex space-x-2">
             <button
                 class="bg-transparent text-right hover:bg-gray-300   py-2 px-1 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
-                id="openButton" onclick="openPopup()">
+                id="openPopup" onclick="openPopup()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
@@ -40,6 +57,72 @@
             </button>
         </div>
     </div>
+
+<!-- Okno popup -->
+<div id="popup" class="popup-container">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-bold">Szczegóły</h2>
+      <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8l5 5 5-5"></path>
+      </svg>
+    </div>
+    <div class="mb-4">
+      <input type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full mb-2" placeholder="Input 1">
+      <input type="text" class="border border-gray-300 rounded-md px-3 py-2 w-full mb-2" placeholder="Input 2">
+    </div>
+    <div class="flex items-center mb-4">
+      <label class="flex items-center">
+        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500"><span class="ml-2">Przypomnij mi w dniu</span>
+      </label>
+      <label class="flex items-center ml-auto">
+        <span>Przypomnij mi o godzinie</span><input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500 ml-2">
+      </label>
+    </div>
+    <div class="flex justify-between items-center mb-4">
+      <span>Priorytet</span>
+      <div>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2">Tak</button>
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Nie</button>
+      </div>
+    </div>
+    <div class="flex justify-between items-center mb-4">
+      <span>Lista</span>
+      <select class="border border-gray-300 rounded-md px-3 py-2">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+    </div>
+    <div class="flex justify-end">
+      <button id="saveBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Zachowaj</button>
+      <button id="cancelBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Anuluj</button>
+    </div>
+  </div>
+
+  <script>
+const openPopupBtn = document.getElementById("openPopup");
+const popup = document.getElementById("popup");
+const saveBtn = document.getElementById("saveBtn");
+const cancelBtn = document.getElementById("cancelBtn");
+
+openPopupBtn.addEventListener("click", () => {
+  popup.style.display = "block";
+});
+
+cancelBtn.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === popup) {
+    popup.style.display = "none";
+  }
+});
+
+
+  </script>
+
+
 
     <!-- Zmiana kolejności divów dla lepszego ułożenia -->
     <div class="flex flex-row h-full">
