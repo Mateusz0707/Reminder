@@ -20,6 +20,17 @@
         padding: 20px;
         z-index: 9999;
     }
+    .popup_user-container {
+        display: none;
+        position: fixed;
+        top: 12%;
+        left: 93%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #ccc;
+        width: 12%;
+        z-index: 9999;
+    }
 </style>
 
 <body class="flex flex-col h-screen">
@@ -48,15 +59,95 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                 </svg>
             </button>
-            <button class="bg-transparent hover:bg-gray-300 text-right rounded focus:outline-none ">
+            <button id="openPopupUser" onclick="openPopup_user(event)" class="bg-transparent hover:bg-gray-300 text-right rounded focus:outline-none ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
             </button>
         </div>
     </div>
+<!-- Okno popup dla konta -->
+<div id="popup_user" class="popup_user-container rounded-xl">
 
-<!-- Okno popup -->
+<!-- Wyswietlanie nazwy uzytkownika i jego emaila -->
+
+<?php
+
+$servername = "mysql";
+$username = "root";
+$password = "your_root_password";
+$database = "reminder";
+
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT Nazwa_uzytkownika, email FROM uzytkownik";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    
+    while($row = $result->fetch_assoc()) {
+        ?>
+        <div style="border-bottom: solid 1px rgb(221, 220, 220);" class="bg-gray-100 h-20 rounded-tl-xl rounded-tr-xl">
+            <h2 class=" ml-3 pt-3 text-xl "><?php echo $row["Nazwa_uzytkownika"]; ?></h2>
+            <h3 class="ml-3 text-sm text-gray-500"><?php echo $row["email"]; ?></h3>
+        </div>
+        <?php
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+
+?>
+
+            <div class="flex mr-5 mt-1 ml-2 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-blue-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077 1.41-.513m14.095-5.13 1.41-.513M5.106 17.785l1.15-.964m11.49-9.642 1.149-.964M7.501 19.795l.75-1.3m7.5-12.99.75-1.3m-6.063 16.658.26-1.477m2.605-14.772.26-1.477m0 17.726-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205 12 12m6.894 5.785-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
+                  </svg>
+                  
+                        
+                  <label for="">Ustawienia iCloud</label>
+
+
+            </div>
+            <div class="flex mr-5 ml-2 ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-blue-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                  </svg>
+                        
+                  <label for="" class="text-blue-500">Zarządzaj Apple ID</label>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mt-1     text-blue-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+
+                  
+                  
+
+
+            </div>
+            <hr class="w-11/12 mt-3 h-2 ml-auto mr-auto "></hr>
+            <div class="flex mr-5 mt-1 ml-2 mb-3  ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  
+                  
+                        
+                  <label class="text-red-500">Wyloguj się</label>
+
+
+            </div>
+    
+      </div>
+
+<!-- Okno popup do dowania przypomnien -->
 <div id="popup" class="popup-container">
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-lg font-bold">Formularz dodawania przypomnienia</h2>
@@ -151,6 +242,21 @@
                     toggleBackground.classList.add('bg-gray-400');
                 }
             });
+        });
+
+        const openPopup_user = (event) => {
+            event.stopPropagation(); // Zapobiega propagacji zdarzenia kliknięcia
+            const popup = document.getElementById("popup_user");
+            popup.style.display = "block";
+        };
+    
+    
+        window.addEventListener("click", (e) => {
+            const popup = document.getElementById("popup_user");
+            // Sprawdź, czy kliknięty element nie jest dzieckiem okna popup
+            if (!popup.contains(e.target) && e.target !== document.getElementById("openPopupUser")) {
+                popup.style.display = "none";
+            }
         });
 </script>
 
