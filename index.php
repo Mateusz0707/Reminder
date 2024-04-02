@@ -4,34 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Przypomnienia</title>
-   
+   <link rel="stylesheet" href="style_index.css">
+   <script src="index.js" defer></script>
     <!-- Dodanie Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<style>
-    .popup-container {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        border: 1px solid #ccc;
-        padding: 20px;
-        z-index: 9999;
-    }
-    .popup_user-container {
-        display: none;
-        position: fixed;
-        top: 12%;
-        left: 93%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        border: 1px solid #ccc;
-        width: 12%;
-        z-index: 9999;
-    }
-</style>
 
 <body class="flex flex-col h-screen">
 
@@ -205,60 +182,6 @@ $conn->close();
     </div>
   </div>
 
-  <script>
-    const openPopup = (event) => {
-        event.stopPropagation(); // Zapobiega propagacji zdarzenia kliknięcia
-        const popup = document.getElementById("popup");
-        popup.style.display = "block";
-    };
-
-    const cancelBtn = document.getElementById("cancelBtn");
-
-    cancelBtn.addEventListener("click", () => {
-        const popup = document.getElementById("popup");
-        popup.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-        const popup = document.getElementById("popup");
-        // Sprawdź, czy kliknięty element nie jest dzieckiem okna popup
-        if (!popup.contains(e.target) && e.target !== document.getElementById("openPopup")) {
-            popup.style.display = "none";
-        }
-    });
-    const toggles = document.querySelectorAll('[id^="toggle"]');
-        toggles.forEach(toggle => {
-            toggle.addEventListener('change', function () {
-                const toggleId = toggle.id;
-                const toggleCheckbox = document.querySelector(`#${toggleId} + label .toggle-checkbox`);
-                const toggleBackground = document.querySelector(`#${toggleId} + label #toggle-bg${toggleId.slice(-1)}`);
-                if (toggle.checked) {
-                    toggleCheckbox.style.transform = 'translateX(100%)';
-                    toggleBackground.classList.remove('bg-gray-400');
-                    toggleBackground.classList.add('bg-blue-500');
-                } else {
-                    toggleCheckbox.style.transform = 'translateX(0)';
-                    toggleBackground.classList.remove('bg-blue-500');
-                    toggleBackground.classList.add('bg-gray-400');
-                }
-            });
-        });
-
-        const openPopup_user = (event) => {
-            event.stopPropagation(); // Zapobiega propagacji zdarzenia kliknięcia
-            const popup = document.getElementById("popup_user");
-            popup.style.display = "block";
-        };
-    
-    
-        window.addEventListener("click", (e) => {
-            const popup = document.getElementById("popup_user");
-            // Sprawdź, czy kliknięty element nie jest dzieckiem okna popup
-            if (!popup.contains(e.target) && e.target !== document.getElementById("openPopupUser")) {
-                popup.style.display = "none";
-            }
-        });
-</script>
 
     <!-- Zmiana kolejności divów dla lepszego ułożenia -->
     <div class="flex flex-row h-full">
@@ -309,7 +232,7 @@ $conn->close();
         <!-- Wyswietlanie przypomnien -->
         <div class="min-h-screen flex-grow">
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <h2 class="text-xl  font-semibold mb-4">Przypomnienia</h2>
+                <h2 id="tyt" class="text-3xl bg-white font-bold mb-4">Przypomnienia</h2>
                 <?php
             // Połączenie z bazą danych MySQL w kontenerze Docker
             $servername = "mysql"; // Nazwa serwera MySQL (zgodna z nazwą usługi w pliku docker-compose.yml)
@@ -333,13 +256,18 @@ $conn->close();
                 // Wyświetlanie danych w divie
                 while ($row = $result->fetch_assoc()) {
                     ?>
-                    <div class="bg-gray-100 rounded p-4 mb-4">
-                        <h3 class="font-semibold mb-2 text-xl font-bold"><?php echo $row["nazwa_przypomnienia"]; ?></h3>
-                        <p class="mb-2"><strong>Notatka:</strong> <?php echo $row["notatka"]; ?></p>
-                        <p class="mb-2"><strong>Godzina:</strong> <?php echo $row["godzina"]; ?></p>
-                        <p class="mb-2"><strong>Data:</strong> <?php echo $row["data"]; ?></p>
-                        <p class="mb-2"><strong>Kategoria:</strong> <?php echo $row["kategoria"]; ?></p>
-                    </div>
+                   <div class="bg-white rounded p-4" style="border-bottom: solid 1px lightgray; display: flex; align-items: center;">
+    <input type="checkbox" id="circle-checkbox" style="margin-right: 10px;" />
+    <label for="circle-checkbox"></label>   
+    <div style="flex-grow: 1;" class="ml-2">
+        <h3 class="font-md"><?php echo $row["nazwa_przypomnienia"]; ?></h3>
+        <div>
+            <label class="text-red-500 text-sm"><?php echo $row["data"]; ?></label>
+            <label class="text-red-500 text-sm" style="margin-left: 10px;"><?php echo $row["godzina"]; ?></label>
+        </div>
+    </div>
+</div>
+
                     <?php
                 }
             } else {
@@ -354,3 +282,5 @@ $conn->close();
 
 </body>
 </html>
+  <!-- <p class="mb-2"><strong>Kategoria:</strong> <?php echo $row["kategoria"]; ?></p> -->
+                           <!-- <p class="mb-2"><strong>Notatka:</strong> <?php echo $row["notatka"]; ?></p> -->
