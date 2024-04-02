@@ -256,17 +256,17 @@ $conn->close();
                 // Wyświetlanie danych w divie
                 while ($row = $result->fetch_assoc()) {
                     ?>
-                   <div class="bg-white rounded p-4" style="border-bottom: solid 1px lightgray; display: flex; align-items: center;">
-    <input type="checkbox" id="circle-checkbox" style="margin-right: 10px;" />
-    <label for="circle-checkbox"></label>   
-    <div style="flex-grow: 1;" class="ml-2">
-        <h3 class="font-md"><?php echo $row["nazwa_przypomnienia"]; ?></h3>
-        <div>
-            <label class="text-red-500 text-sm"><?php echo $row["data"]; ?></label>
-            <label class="text-red-500 text-sm" style="margin-left: 10px;"><?php echo $row["godzina"]; ?></label>
-        </div>
-    </div>
-</div>
+                    <div class="bg-white rounded p-4" style="border-bottom: solid 1px lightgray; display: flex; align-items: center;">
+                <input type="checkbox" id="circle-checkbox_<?php echo $row["id"]; ?>" class="hidden" />
+                <label for="circle-checkbox_<?php echo $row["id"]; ?>" class="checkbox-label" style="margin-right: 10px;"></label>
+                <div style="flex-grow: 1;" class="ml-2">
+                    <h3 class="font-md"><?php echo $row["nazwa_przypomnienia"]; ?></h3>
+                    <div>
+                        <label class="text-red-500 text-sm"><?php echo $row["data"]; ?></label>
+                        <label class="text-red-500 text-sm" style="margin-left: 10px;"><?php echo $row["godzina"]; ?></label>
+                    </div>
+                </div>
+            </div>
 
                     <?php
                 }
