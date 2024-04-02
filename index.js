@@ -21,6 +21,9 @@ window.addEventListener("click", (e) => {
     popup.style.display = "none";
   }
 });
+
+// Skrypt do obsługiwania animacji checkboxa dla dodawania przypomnienia
+
 const toggles = document.querySelectorAll('[id^="toggle"]');
 toggles.forEach((toggle) => {
   toggle.addEventListener("change", function () {
@@ -43,6 +46,8 @@ toggles.forEach((toggle) => {
   });
 });
 
+// Skrypt do Okna popup uzytkownika
+
 const openPopup_user = (event) => {
   event.stopPropagation(); // Zapobiega propagacji zdarzenia kliknięcia
   const popup = document.getElementById("popup_user");
@@ -58,4 +63,17 @@ window.addEventListener("click", (e) => {
   ) {
     popup.style.display = "none";
   }
+});
+
+// Przycisk do informacji o przypomnieniu
+const openBtn = document.getElementById("openBtn");
+const closeBtn = document.getElementById("closeBtn");
+const popupContainer = document.getElementById("popup-container");
+
+openBtn.addEventListener("click", function () {
+  popupContainer.classList.remove("hidden");
+});
+
+closeBtn.addEventListener("click", function () {
+  popupContainer.classList.add("hidden");
 });

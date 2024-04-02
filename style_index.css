@@ -65,3 +65,6 @@ input[type="checkbox"]:checked + label {
   height: 15px; /* dostosuj rozmiar ikony według potrzeb */
   color: white;
 }
+.text-orange-500 {
+  color: #ed8936; /* Pomarańczowy kolor z palety kolorów Tailwind CSS */
+}
