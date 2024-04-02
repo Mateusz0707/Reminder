@@ -45,3 +45,23 @@ input[type="checkbox"]:checked + label {
   background-color: #f59e0b;
   border-color: #f59e0b;
 }
+#check {
+  background-color: #f59e0b;
+}
+
+/* Style do checkboxa na sidebarze */
+.circle {
+  width: 23px;
+  height: 23px;
+  background-color: orange;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px white;
+}
+.icon {
+  width: 15px; /* dostosuj rozmiar ikony według potrzeb */
+  height: 15px; /* dostosuj rozmiar ikony według potrzeb */
+  color: white;
+}

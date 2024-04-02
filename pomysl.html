@@ -3,40 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkbox Circle</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <title>Pomarańczowe koło z ikonką</title>
     <style>
-      /* Dodatkowe style CSS */
-      input[type="checkbox"] {
-        display: none;
-      }
-
-      input[type="checkbox"] + label {
-        background-color: #fff;
-        border: 2px solid #cbd5e0;
+      .circle {
+        width: 35px;
+        height: 35px;
+        background-color: orange;
         border-radius: 50%;
-        width: 2.5rem;
-        height: 2.5rem;
-        display: inline-block;
-        cursor: pointer;
-        transition: all 0.3s;
-        margin: 0.2rem; /* Dodajemy margines */
-        box-shadow: inset 0 0 0 3px #fff; /* Dodajemy przerwę */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px white;
       }
-
-      input[type="checkbox"]:checked + label {
-        background-color: #f59e0b;
-        border-color: #f59e0b;
+      .icon {
+        width: 20px; /* dostosuj rozmiar ikony według potrzeb */
+        height: 20px; /* dostosuj rozmiar ikony według potrzeb */
+        color: white;
       }
     </style>
   </head>
-  <body class="bg-gray-200 p-8">
-    <div class="flex items-center justify-center">
-      <input type="checkbox" id="circle-checkbox" />
-      <label for="circle-checkbox"></label>
+  <body>
+    <div class="circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="white"
+        viewBox="0 0 24 24"
+        stroke-width="1.7"
+        stroke="currentColor"
+        class="icon text-white"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z"
+          class="text-white"
+        />
+      </svg>
     </div>
   </body>
 </html>
