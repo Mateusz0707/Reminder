@@ -65,15 +65,17 @@ window.addEventListener("click", (e) => {
   }
 });
 
-// Przycisk do informacji o przypomnieniu
-const openBtn = document.getElementById("openBtn");
-const closeBtn = document.getElementById("closeBtn");
-const popupContainer = document.getElementById("popup-container");
-
-openBtn.addEventListener("click", function () {
-  popupContainer.classList.remove("hidden");
+//Skrypt do okna do informacji o powiadomieniu
+const openButtons = document.querySelectorAll(".open_info_pop");
+openButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    document.getElementById("pop_info").classList.remove("hidden");
+  });
 });
 
-closeBtn.addEventListener("click", function () {
-  popupContainer.classList.add("hidden");
+const closeButtons = document.querySelectorAll(".close_info_Btn");
+closeButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    document.getElementById("pop_info").classList.add("hidden");
+  });
 });

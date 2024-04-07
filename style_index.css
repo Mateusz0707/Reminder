@@ -9,6 +9,7 @@
   padding: 20px;
   z-index: 9999;
 }
+
 .popup_user-container {
   display: none;
   position: fixed;
