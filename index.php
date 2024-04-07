@@ -279,14 +279,11 @@ $conn->close();
                 </div>
 
                 <div class="flex justify-end">
-                <button id="openBtn" type="button" class=" bg-transparent hover:bg-gray-100 px-2 text-right rounded focus:outline-none w-10 h-10">
+                <button type="button" class="open_info_pop bg-transparent hover:bg-gray-100 px-2 text-right rounded focus:outline-none w-10 h-10">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-orange-500">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                 </svg>
             </button>
-
-               
-
                 </div>
             </div>
 
@@ -302,7 +299,7 @@ $conn->close();
 
     </div>
 <!-- Okno popup dla szczegolow przypomnienia -->
-<div id="popup-container" class="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 hidden">
+<div id="pop_info" class="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 hidden">
 <div class="bg-white p-6 rounded-lg shadow-lg">
             <h2 class="text-lg font-semibold mb-4">informacje o przypomnieniu</h2>
             <div class="mb-2">
@@ -322,7 +319,7 @@ $conn->close();
             </div>
             <div class="flex justify-end justify-between">
       <button class="bg-blue-500 hover:bg-blue-700 w-40  text-white py-2 px-4 rounded-2xl mr-2">Zachowaj zmiany</button>
-      <button id="closeBtn" class="bg-red-500 hover:bg-red-700 w-40  text-white  py-2 px-4 rounded-2xl">Anuluj</button>
+      <button  class="close_info_Btn bg-red-500 hover:bg-red-700 w-40  text-white  py-2 px-4 rounded-2xl">Anuluj</button>
     </div>
 
         </div>
